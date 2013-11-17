@@ -9,7 +9,7 @@ end
 get '/list' do
 
   Dir.chdir("public/cache") do
-    @signs = Dir.glob('*.png')
+    @signs = Dir.glob('*.png').sort{|a,b| File.mtime(b) <=> File.mtime(a)}
   end
   
   @signs = @signs[0..50]
@@ -23,19 +23,10 @@ date = params[:date] || nil
 time = params[:time] || nil
 text = params[:text].values.delete_if {|a|a.empty?}
 
-texta = ["first line this and that and", 
-        "second line that and this",
-        "third line", 
-        "fourth line",
-        "fith line",
-        "sixth line", 
-        "sevent line"]
-
 filename = File.join("public/cache", Digest::MD5.hexdigest(params.to_s)+".png")
 
 unless File.exists? filename
   # create image
-  puts "not exist, creating"
   img = ImageList.new("tube_sign.png") 
   draw = Draw.new
 
@@ -73,7 +64,7 @@ unless File.exists? filename
   img.write(filename)
   
 else
-puts "loading image"
+
   # load image
   img = ImageList.new(filename)
 end
