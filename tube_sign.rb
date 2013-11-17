@@ -40,7 +40,7 @@ unless File.exists? filename
   draw = Draw.new
 
   draw.annotate(img, 0,0, 237, 285, date){
-    self.font = '/home/tim/projects/tube_sign/fonts/Reenie_Beanie/ReenieBeanie.ttf'
+    self.font = 'fonts/Reenie_Beanie/ReenieBeanie.ttf'
     self.fill = 'black'
     self.stroke = 'transparent'
     self.pointsize = 40
