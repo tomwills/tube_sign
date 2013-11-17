@@ -1,0 +1,7 @@
+<h2>Lists recent images</h2>
+<%if @signs.size == 0 %>
+    <p>Sorry there are no recent images, please check back later</p>
+<% end %>
+<% @signs.each do | sign | %>
+    <img src="/cache/<%=sign%>" style='padding:0.1em' width="300px"> 
+<% end %>
