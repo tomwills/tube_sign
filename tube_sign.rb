@@ -49,7 +49,7 @@ unless File.exists? filename
 
 
   draw.annotate(img, 0,0, 273, 330, time){
-    self.font = '/home/tim/projects/tube_sign/fonts/Reenie_Beanie/ReenieBeanie.ttf'
+    self.font = 'fonts/Reenie_Beanie/ReenieBeanie.ttf'
     self.fill = 'black'
     self.stroke = 'transparent'
     self.pointsize = 30
@@ -62,7 +62,7 @@ unless File.exists? filename
     pointsize = 38 if i == 0
     y = y+36
     draw.annotate(img, 0,0,160,y, t) {
-      self.font = '/home/tim/projects/tube_sign/fonts/Reenie_Beanie/ReenieBeanie.ttf'
+      self.font = 'fonts/Reenie_Beanie/ReenieBeanie.ttf'
       self.fill = 'black'
       self.stroke = 'transparent'
       self.pointsize = pointsize
