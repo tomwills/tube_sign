@@ -2,6 +2,7 @@
 <%if @signs.size == 0 %>
     <p>Sorry there are no recent images, please check back later</p>
 <% else %>
+    <!-- hello fellow view source code viewer. The total images found in this deploy is: <%= @count %> -->
     <p>Showing the latest <%= @signs.size %> images. Images get <b>deleted automatically & very quickly</b>, so make sure to "right click and save as" if you want to keep one.</p>
 <% end %>
 <% @signs.each do | sign | %>

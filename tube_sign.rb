@@ -11,8 +11,8 @@ get '/list' do
   Dir.chdir("public/cache") do
     @signs = Dir.glob('*.png').sort{|a,b| File.mtime(b) <=> File.mtime(a)}
   end
-  
-  @signs = @signs[0..50]
+  @count = @signs.size
+  @signs = @signs[0..49]
 
   erb :list
 end 
