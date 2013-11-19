@@ -61,7 +61,9 @@ unless File.exists? filename
     }
   end
   # save image
-  img.write(filename)
+  img.write(filename) do
+    self.compression = Magick::ZipCompression
+  end
   
 else
 
