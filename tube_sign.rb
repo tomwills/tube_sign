@@ -25,12 +25,12 @@ text = params[:text].values.delete_if {|a|a.empty?}
 
 filename = File.join("public/cache", Digest::MD5.hexdigest(params.to_s)+".png")
 
-unless File.exists? filename
+unless File.exists? filename 
   # create image
-  img = ImageList.new("tube_sign.png") 
+  img = ImageList.new("tube_sign2.png") 
   draw = Draw.new
 
-  draw.annotate(img, 0,0, 237, 285, date){
+  draw.annotate(img, 0,0, 244, 220, date){
     self.font = 'fonts/Reenie_Beanie/ReenieBeanie.ttf'
     self.fill = 'black'
     self.stroke = 'transparent'
@@ -39,7 +39,7 @@ unless File.exists? filename
   } unless date.empty?
 
 
-  draw.annotate(img, 0,0, 273, 330, time){
+  draw.annotate(img, 0,0, 264, 259, time){
     self.font = 'fonts/Reenie_Beanie/ReenieBeanie.ttf'
     self.fill = 'black'
     self.stroke = 'transparent'
@@ -47,17 +47,22 @@ unless File.exists? filename
     self.rotation = 3
   } unless time.empty?
 
-  y = 344
+  y = 257
   text.each_with_index do | t, i |
     pointsize = 32 + [*-1..4].sample
     pointsize = 38 if i == 0
-    y = y+36
-    draw.annotate(img, 0,0,160,y, t) {
+    
+    bit = i>4 ? 35 : 44
+    y = y+bit
+    
+    x_fudge  = [*-4..4].sample
+    x = 170 + x_fudge
+    draw.annotate(img, 0,0,x,y, t) {
       self.font = 'fonts/Reenie_Beanie/ReenieBeanie.ttf'
       self.fill = 'black'
       self.stroke = 'transparent'
       self.pointsize = pointsize
-      self.rotation = [*-2..1].sample
+      self.rotation = [*0..3].sample
     }
   end
   # save image
