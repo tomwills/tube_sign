@@ -1,7 +1,8 @@
 namespace :cache do
 desc "Deletes cache files"
   task :clean do
+    count = Dir.glob('./public/cache/*.png').length
     signs = Dir.glob('./public/cache/*.png').each { |f| File.delete(f) }
-    puts signs.size + " Images deleted"
+    puts  "#{count} Images deleted"
   end
 end
